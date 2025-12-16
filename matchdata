@@ -1,0 +1,547 @@
+{
+    "typeMatches": [
+        {
+            "matchType": "League",
+            "seriesMatches": [
+                {
+                    "seriesAdWrapper": {
+                        "seriesId": 10289,
+                        "seriesName": "Big Bash League 2025-26",
+                        "matches": [
+                            {
+                                "matchInfo": {
+                                    "matchId": 123089,
+                                    "seriesId": 10289,
+                                    "seriesName": "Big Bash League 2025-26",
+                                    "matchDesc": "3rd Match",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765872900000",
+                                    "endDate": "1765885500000",
+                                    "state": "In Progress",
+                                    "status": "Hobart Hurricanes need 22 runs in 18 balls",
+                                    "team1": {
+                                        "teamId": 192,
+                                        "teamName": "Sydney Thunder",
+                                        "teamSName": "SYT",
+                                        "imageId": 172252
+                                    },
+                                    "team2": {
+                                        "teamId": 194,
+                                        "teamName": "Hobart Hurricanes",
+                                        "teamSName": "HBH",
+                                        "imageId": 172254
+                                    },
+                                    "venueInfo": {
+                                        "id": 39,
+                                        "ground": "Bellerive Oval",
+                                        "city": "Hobart",
+                                        "timezone": "+11:00",
+                                        "latitude": "-42.877296",
+                                        "longitude": "147.374013"
+                                    },
+                                    "currBatTeamId": 194,
+                                    "seriesStartDt": "1765670400000",
+                                    "seriesEndDt": "1769472000000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "In Progress"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 180,
+                                            "wickets": 6,
+                                            "overs": 19.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 159,
+                                            "wickets": 5,
+                                            "overs": 16.6
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "matchType": "Domestic",
+            "seriesMatches": [
+                {
+                    "seriesAdWrapper": {
+                        "seriesId": 10493,
+                        "seriesName": "Syed Mushtaq Ali Trophy Elite 2025",
+                        "matches": [
+                            {
+                                "matchInfo": {
+                                    "matchId": 128770,
+                                    "seriesId": 10493,
+                                    "seriesName": "Syed Mushtaq Ali Trophy Elite 2025",
+                                    "matchDesc": "Super League Group A",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765872000000",
+                                    "endDate": "1765884600000",
+                                    "state": "In Progress",
+                                    "status": "Jharkhand need 33 runs in 20 balls",
+                                    "team1": {
+                                        "teamId": 241,
+                                        "teamName": "Andhra",
+                                        "teamSName": "AP",
+                                        "imageId": 172294
+                                    },
+                                    "team2": {
+                                        "teamId": 243,
+                                        "teamName": "Jharkhand",
+                                        "teamSName": "JHKD",
+                                        "imageId": 172296
+                                    },
+                                    "venueInfo": {
+                                        "id": 1438229,
+                                        "ground": "DY Patil Academy, Ambi",
+                                        "city": "Pune",
+                                        "timezone": "+05:30",
+                                        "latitude": "18.7559903",
+                                        "longitude": "73.6658219"
+                                    },
+                                    "currBatTeamId": 243,
+                                    "seriesStartDt": "1764115200000",
+                                    "seriesEndDt": "1766188800000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "In Progress"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 203,
+                                            "wickets": 7,
+                                            "overs": 19.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 171,
+                                            "wickets": 5,
+                                            "overs": 16.4
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "matchInfo": {
+                                    "matchId": 128776,
+                                    "seriesId": 10493,
+                                    "seriesName": "Syed Mushtaq Ali Trophy Elite 2025",
+                                    "matchDesc": "Super League Group B",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765882800000",
+                                    "endDate": "1765895400000",
+                                    "state": "In Progress",
+                                    "status": "Hyderabad opt to bowl",
+                                    "team1": {
+                                        "teamId": 200,
+                                        "teamName": "Haryana",
+                                        "teamSName": "HAR",
+                                        "imageId": 172260
+                                    },
+                                    "team2": {
+                                        "teamId": 242,
+                                        "teamName": "Hyderabad",
+                                        "teamSName": "HYD",
+                                        "imageId": 172295
+                                    },
+                                    "venueInfo": {
+                                        "id": 287,
+                                        "ground": "Maharashtra Cricket Association Stadium",
+                                        "city": "Pune",
+                                        "timezone": "+05:30",
+                                        "latitude": "18.674498",
+                                        "longitude": "73.706516"
+                                    },
+                                    "currBatTeamId": 200,
+                                    "seriesStartDt": "1764115200000",
+                                    "seriesEndDt": "1766188800000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "In Progress"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 54,
+                                            "overs": 5.1
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "matchInfo": {
+                                    "matchId": 128765,
+                                    "seriesId": 10493,
+                                    "seriesName": "Syed Mushtaq Ali Trophy Elite 2025",
+                                    "matchDesc": "Super League Group B",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765863000000",
+                                    "endDate": "1765875600000",
+                                    "state": "Complete",
+                                    "status": "Mumbai won by 3 wkts",
+                                    "team1": {
+                                        "teamId": 171,
+                                        "teamName": "Rajasthan",
+                                        "teamSName": "RAJ",
+                                        "imageId": 172239
+                                    },
+                                    "team2": {
+                                        "teamId": 95,
+                                        "teamName": "Mumbai",
+                                        "teamSName": "MUM",
+                                        "imageId": 172187
+                                    },
+                                    "venueInfo": {
+                                        "id": 287,
+                                        "ground": "Maharashtra Cricket Association Stadium",
+                                        "city": "Pune",
+                                        "timezone": "+05:30",
+                                        "latitude": "18.674498",
+                                        "longitude": "73.706516"
+                                    },
+                                    "currBatTeamId": 95,
+                                    "seriesStartDt": "1764115200000",
+                                    "seriesEndDt": "1766188800000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "Complete"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 216,
+                                            "wickets": 4,
+                                            "overs": 19.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 217,
+                                            "wickets": 7,
+                                            "overs": 18.1
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "matchInfo": {
+                                    "matchId": 128759,
+                                    "seriesId": 10493,
+                                    "seriesName": "Syed Mushtaq Ali Trophy Elite 2025",
+                                    "matchDesc": "Super League Group A",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765855800000",
+                                    "endDate": "1765868400000",
+                                    "state": "Complete",
+                                    "status": "Punjab won by 2 wkts",
+                                    "team1": {
+                                        "teamId": 167,
+                                        "teamName": "Madhya Pradesh",
+                                        "teamSName": "MP",
+                                        "imageId": 172236
+                                    },
+                                    "team2": {
+                                        "teamId": 245,
+                                        "teamName": "Punjab",
+                                        "teamSName": "PUN",
+                                        "imageId": 172298
+                                    },
+                                    "venueInfo": {
+                                        "id": 1438229,
+                                        "ground": "DY Patil Academy, Ambi",
+                                        "city": "Pune",
+                                        "timezone": "+05:30",
+                                        "latitude": "18.7559903",
+                                        "longitude": "73.6658219"
+                                    },
+                                    "currBatTeamId": 245,
+                                    "seriesStartDt": "1764115200000",
+                                    "seriesEndDt": "1766188800000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "Complete"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 225,
+                                            "wickets": 8,
+                                            "overs": 19.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 226,
+                                            "wickets": 8,
+                                            "overs": 19.1
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "seriesAdWrapper": {
+                        "seriesId": 11223,
+                        "seriesName": "ACC Mens U19 Asia Cup 2025",
+                        "matches": [
+                            {
+                                "matchInfo": {
+                                    "matchId": 138823,
+                                    "seriesId": 11223,
+                                    "seriesName": "ACC Mens U19 Asia Cup 2025",
+                                    "matchDesc": "9th Match, Group A",
+                                    "matchFormat": "ODI",
+                                    "startDate": "1765861200000",
+                                    "endDate": "1765890000000",
+                                    "state": "In Progress",
+                                    "status": "United Arab Emirates U19 need 123 runs",
+                                    "team1": {
+                                        "teamId": 56,
+                                        "teamName": "Pakistan U19",
+                                        "teamSName": "PAKU19",
+                                        "imageId": 776309
+                                    },
+                                    "team2": {
+                                        "teamId": 283,
+                                        "teamName": "United Arab Emirates U19",
+                                        "teamSName": "UAEU19",
+                                        "imageId": 776244
+                                    },
+                                    "venueInfo": {
+                                        "id": 289,
+                                        "ground": "ICC Academy Ground",
+                                        "city": "Dubai",
+                                        "timezone": "+04:00",
+                                        "latitude": "25.036563",
+                                        "longitude": "55.227611"
+                                    },
+                                    "currBatTeamId": 283,
+                                    "seriesStartDt": "1765497600000",
+                                    "seriesEndDt": "1766448000000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "In Progress"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 241,
+                                            "wickets": 9,
+                                            "overs": 49.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 119,
+                                            "wickets": 3,
+                                            "overs": 24.6
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "matchInfo": {
+                                    "matchId": 138834,
+                                    "seriesId": 11223,
+                                    "seriesName": "ACC Mens U19 Asia Cup 2025",
+                                    "matchDesc": "10th Match, Group A",
+                                    "matchFormat": "ODI",
+                                    "startDate": "1765861200000",
+                                    "endDate": "1765890000000",
+                                    "state": "Complete",
+                                    "status": "India U19 won by 315 runs",
+                                    "team1": {
+                                        "teamId": 54,
+                                        "teamName": "India U19",
+                                        "teamSName": "INDU19",
+                                        "imageId": 776180
+                                    },
+                                    "team2": {
+                                        "teamId": 386,
+                                        "teamName": "Malaysia U19",
+                                        "teamSName": "MLYU19",
+                                        "imageId": 776321
+                                    },
+                                    "venueInfo": {
+                                        "id": 791,
+                                        "ground": "The Sevens Stadium",
+                                        "city": "Dubai",
+                                        "timezone": "+04:00",
+                                        "latitude": "25.114350",
+                                        "longitude": "55.138100"
+                                    },
+                                    "currBatTeamId": 54,
+                                    "seriesStartDt": "1765497600000",
+                                    "seriesEndDt": "1766448000000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "Complete"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 408,
+                                            "wickets": 7,
+                                            "overs": 49.6
+                                        }
+                                    },
+                                    "team2Score": {
+                                        "inngs1": {
+                                            "inningsId": 2,
+                                            "runs": 93,
+                                            "wickets": 10,
+                                            "overs": 32.1
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "matchType": "Women",
+            "seriesMatches": [
+                {
+                    "seriesAdWrapper": {
+                        "seriesId": 10994,
+                        "seriesName": "Ireland Women tour of South Africa 2025",
+                        "matches": [
+                            {
+                                "matchInfo": {
+                                    "matchId": 135233,
+                                    "seriesId": 10994,
+                                    "seriesName": "Ireland Women tour of South Africa 2025",
+                                    "matchDesc": "2nd ODI",
+                                    "matchFormat": "ODI",
+                                    "startDate": "1765872000000",
+                                    "endDate": "1765900800000",
+                                    "state": "Innings Break",
+                                    "status": "Innings Break",
+                                    "team1": {
+                                        "teamId": 260,
+                                        "teamName": "South Africa Women",
+                                        "teamSName": "RSAW",
+                                        "imageId": 776293
+                                    },
+                                    "team2": {
+                                        "teamId": 189,
+                                        "teamName": "Ireland Women",
+                                        "teamSName": "IREW",
+                                        "imageId": 776286
+                                    },
+                                    "venueInfo": {
+                                        "id": 73,
+                                        "ground": "St George's Park",
+                                        "city": "Gqeberha",
+                                        "timezone": "+02:00",
+                                        "latitude": "-33.966545",
+                                        "longitude": "25.610332"
+                                    },
+                                    "currBatTeamId": 260,
+                                    "seriesStartDt": "1764892800000",
+                                    "seriesEndDt": "1766275200000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "Ings Break"
+                                },
+                                "matchScore": {
+                                    "team1Score": {
+                                        "inngs1": {
+                                            "inningsId": 1,
+                                            "runs": 375,
+                                            "wickets": 6,
+                                            "overs": 49.6
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ad": {
+                        "name": "native_matches",
+                        "layout": "native_large",
+                        "position": 4
+                    }
+                },
+                {
+                    "seriesAdWrapper": {
+                        "seriesId": 11355,
+                        "seriesName": "SEA Games Womens Twenty20 Cricket Competition 2025",
+                        "matches": [
+                            {
+                                "matchInfo": {
+                                    "matchId": 140803,
+                                    "seriesId": 11355,
+                                    "seriesName": "SEA Games Womens Twenty20 Cricket Competition 2025",
+                                    "matchDesc": "4th Match, Group A",
+                                    "matchFormat": "T20",
+                                    "startDate": "1765866600000",
+                                    "endDate": "1765879200000",
+                                    "state": "Toss",
+                                    "status": "Singapore Women opt to bowl",
+                                    "team1": {
+                                        "teamId": 382,
+                                        "teamName": "Thailand Women",
+                                        "teamSName": "THAIW",
+                                        "imageId": 172435
+                                    },
+                                    "team2": {
+                                        "teamId": 509,
+                                        "teamName": "Singapore Women",
+                                        "teamSName": "SINW",
+                                        "imageId": 776279
+                                    },
+                                    "venueInfo": {
+                                        "id": 474,
+                                        "ground": "Terdthai Cricket Ground",
+                                        "city": "Bangkok",
+                                        "timezone": "+07:00",
+                                        "latitude": "13.756331",
+                                        "longitude": "100.501765"
+                                    },
+                                    "seriesStartDt": "1765756800000",
+                                    "seriesEndDt": "1766275200000",
+                                    "isTimeAnnounced": true,
+                                    "stateTitle": "Toss"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "filters": {
+        "matchType": [
+            "International",
+            "League",
+            "Domestic",
+            "Women"
+        ]
+    },
+    "appIndex": {
+        "seoTitle": "Live Cricket Score - Scorecard and Match Results",
+        "webURL": "www.cricbuzz.com/live-cricket-scores/"
+    },
+    "responseLastUpdated": "1765884359"
+}
