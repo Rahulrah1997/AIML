@@ -51,6 +51,13 @@ def livematches():
                 team2_sname = info.get("team2",{}).get("teamSName")
                 Ground_name = info.get("venueInfo",{}).get("ground")
                 city = info.get("venueInfo",{}).get("city")
+                matchScore = match.get('matchScore',{})
+                team1score = matchScore.get('team1Score',{}).get('inngs1',{}).get('runs')
+                team1wicket = matchScore.get('team1Score',{}).get('inngs1',{}).get('wickets')
+                team1overs = matchScore.get('team1Score',{}).get('inngs1',{}).get('overs')
+                team2score = matchScore.get('team2Score',{}).get('inngs1',{}).get('runs')
+                team2wicket = matchScore.get('team2Score',{}).get('inngs1',{}).get('wickets')
+                team2overs = matchScore.get('team2Score',{}).get('inngs1',{}).get('overs')
 
                 matches.append({
                     'series_id': series_id,
@@ -66,7 +73,13 @@ def livematches():
                     'team2_sname': team2_sname,
                     'Ground_name': Ground_name,
                     'city': city,
-                    'state':state
+                    'state':state,
+                    'team1score':team1score,
+                    'team1wicket':team1wicket,
+                    'team1overs':team1overs,
+                    'team2score':team2score,
+                    'team2wicket':team2wicket,
+                    'team2overs':team2overs
             }
 
             )
@@ -93,6 +106,8 @@ if Pageselection == 'Live Matches':
         City = selected_match['city']
         Status = selected_match['match_status']
         State = selected_match['state']
+        Team1_Score = selected_match['team1score']
+        Team2_Score = selected_match['team2score']
 
         c1,c2 = st.columns(2)
 
@@ -101,11 +116,13 @@ if Pageselection == 'Live Matches':
             st.markdown(f"Match: {description}")
             st.markdown(f"Format: {Match_Format}")
             st.markdown(f"Venue: {Venue}")
+            st.markdown(Team1_Score)
 
         with c2:
             st.markdown(f"City: {City}")
             st.markdown(f"Status: {Status}")
             st.markdown(f"State: {State}")
+            st.markdown(Team2_Score)
 
 
 
