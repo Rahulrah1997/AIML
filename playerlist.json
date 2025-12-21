@@ -1,0 +1,65 @@
+{
+    "player": [
+        {
+            "id": "19318",
+            "name": "Salman Mirza",
+            "teamName": "Pakistan",
+            "faceImageId": 182026
+        },
+        {
+            "id": "12139",
+            "name": "Abdullah Shafique",
+            "teamName": "Pakistan",
+            "faceImageId": 352418
+        },
+        {
+            "id": "10055",
+            "name": "Matt Renshaw",
+            "teamName": "Australia",
+            "faceImageId": 332920
+        },
+        {
+            "id": "11265",
+            "name": "Faheem Ashraf",
+            "teamName": "Pakistan",
+            "faceImageId": 616443
+        },
+        {
+            "id": "6734",
+            "name": "Alex Hales",
+            "teamName": "England",
+            "faceImageId": 244785
+        },
+        {
+            "id": "19318",
+            "name": "Salman Mirza",
+            "teamName": "Pakistan",
+            "faceImageId": 182026
+        },
+        {
+            "id": "466",
+            "name": "Piyush Chawla",
+            "teamName": "India",
+            "faceImageId": 594325
+        },
+        {
+            "id": "41113",
+            "name": "Hasan Nawaz",
+            "teamName": "Pakistan",
+            "faceImageId": 182026
+        },
+        {
+            "id": "8989",
+            "name": "Marcus Stoinis",
+            "teamName": "Australia",
+            "faceImageId": 352453
+        },
+        {
+            "id": "10738",
+            "name": "Rashid Khan",
+            "teamName": "Afghanistan",
+            "faceImageId": 616553
+        }
+    ],
+    "category": "TRENDING SEARCHES"
+}
