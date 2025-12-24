@@ -97,21 +97,86 @@ class Live_Dashbord():
                 )
         return matches
     def ScoreCard(self):
-            matches = self.Get_Match_Details()
-            Matchid = matches['match_id']
+        with open("scr.json","r",encoding="utf-8")as file:
+            score = json.load(file)
 
-            url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{Matchid}/scard"
+        Score_card=[]
+        for scorecard in score.get('scorecard',[]):
+            innings_id = scorecard.get('inningsid')
+            for batsman in scorecard.get('batsman',[]):
+                batsman_id = batsman.get('id')
+                batsman_name = batsman.get('name')
+                batsman_runs = batsman.get('runs')
+                batsman_balls= batsman.get('balls')
+                batsman_fours = batsman.get('fours')
+                batsman_sixes = batsman.get('sixes')
+                batsman_strikerate = batsman.get('strkrate')
+                batsman_Is_captain = batsman.get('iscaptain')
+                batsman_Out_Descrption= batsman.get('outdec')
 
-            headers = {
-                "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
-                "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
-            }
+                overs = None
 
-            response = requests.get(url, headers=headers)
+                fow_data = scorecard.get('fow', {}).get('fow', [])  
+                if isinstance(fow_data, list):
+                    
+                    for fow in fow_data:
+                        if isinstance(fow, dict):
+                            
+                            if fow.get('batsmanid') == batsman_id:
+                                overs = fow.get('overnbr') 
+
+                for bowler in scorecard.get('bowler',[]):
+                    bowler_id = bowler.get('id')
+                    bowler_name = bowler.get('name')
+                    bowler_overs = bowler.get('overs')
+                    bowler_maidens= bowler.get('maidens')
+                    bowler_wickets = bowler.get('wickets')
+                    bowler_runs = bowler.get('runs')
+                    bowler_economy = bowler.get('economy')
+                    bowler_Is_captain = bowler.get('iscaptain')
+
+                Score_card.append({
+                    'innings_id':innings_id,
+                    'batsman_id':batsman_id,
+                    'batsman_name':batsman_name,
+                    'batsman_runs':batsman_runs,
+                    'batsman_balls':batsman_balls,
+                    'batsman_fours':batsman_fours,
+                    'batsman_sixes':batsman_sixes,
+                    'batsman_strikerate':batsman_strikerate,
+                    'batsman_Is_captain':batsman_Is_captain,
+                    'batsman_Out_Descrption':batsman_Out_Descrption,
+                    'bowler_id':bowler_id,
+                    'bowler_name':bowler_name,
+                    'bowler_overs':bowler_overs,
+                    'bowler_wickets':bowler_wickets,
+                    'bowler_maidens':bowler_maidens,
+                    'bowler_runs':bowler_runs,
+                    'bowler_economy':bowler_economy,
+                    'bowler_Is_captain':bowler_Is_captain,
+                    'overs':overs
+
+                    
+                })
+
+        return(Score_card)
+            # matches = self.Get_Match_Details()
+            # Matchid = matches['match_id']
+
+            # url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{Matchid}/scard"
+
+            # headers = {
+            #     "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+            #     "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
+            # }
+
+            # response = requests.get(url, headers=headers)
         
 
     def live_matches(self):   
-        matches = self.Get_Match_Details()             
+        matches = self.Get_Match_Details()
+        scorecard = self.ScoreCard()   
+        df = pd.DataFrame(scorecard)          
         st.title("Live Match Dashboard 🏏",width='stretch')
         selected_match = st.selectbox('Select a Match',options=matches,
                     format_func=lambda m: f"{m['series_name']} ({m['team1_sname']} vs {m['team2_sname']})")
@@ -163,6 +228,10 @@ class Live_Dashbord():
                 c1_inner1.metric("Overs", Team1details_inn1['Overs'])
                 c1_inner2.metric("Wickets", Team1details_inn1['wicket'])
                 st.markdown("---")
+                inn_details= st.button('innings1')
+
+            if inn_details:
+                st.dataframe(df,hide_index=True)
 
                 if selected_match['team1score_inn2']:
                     st.markdown(f"**{Team1details_inn2['TeamName']}|Innings2**")
@@ -172,6 +241,9 @@ class Live_Dashbord():
                     c1_inner2.metric("Wickets", Team1details_inn2['wicket'])
                     st.markdown("---")
 
+                    inn_details = st.button('innings3')
+
+
 
             with c2:
                 st.markdown(f"**{Team2details_inn1['TeamName']}**")
@@ -180,6 +252,9 @@ class Live_Dashbord():
                 c2_inner1.metric("Overs", Team2details_inn1['overs'])
                 c2_inner2.metric("Wickets", Team2details_inn1['wicket'])
                 st.markdown("---")
+                inn2_details = st.button('innings2')
+                if inn2_details:
+                    st.write("aaa")
 
                 if selected_match['team2score_inn2']:
                     st.markdown(f"**{Team2details_inn2['TeamName']}|Innings2**")
@@ -188,5 +263,6 @@ class Live_Dashbord():
                     c1_inner1.metric("Overs", Team2details_inn2['Overs'])
                     c1_inner2.metric("Wickets", Team2details_inn2['wicket'])
                     st.markdown("---")
+                    st.button('innings4')
                     
         
