@@ -6,11 +6,13 @@ import matplotlib.pyplot as plt
 import altair as alt
 import time
 import json
+from collections import defaultdict 
 
 
 class Live_Dashbord():
     
 #@st.fragment(run_every=5)
+    
     
     def Get_Match_Details(self):
         matches = []
@@ -96,70 +98,98 @@ class Live_Dashbord():
 
                 )
         return matches
-    def ScoreCard(self):
-        with open("scr.json","r",encoding="utf-8")as file:
-            score = json.load(file)
+    def scorecard_by_innings(self):
 
-        Score_card=[]
-        for scorecard in score.get('scorecard',[]):
+        # with open("scr.json","r",encoding="utf-8")as file:
+        #     score = json.load(file)
+        st.write(3)
+
+        matches = self.Get_Match_Details()
+        st.write(4)
+        Matchid = matches['match_id']
+        st.write(5)
+
+        url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{Matchid}/scard"
+
+        headers = {
+            "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+            "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
+        }
+        st.write(7)
+
+        response = requests.get(url, headers=headers)
+        st.write(6)
+        score = response.json()
+        
+        structured_data_by_innings = defaultdict(lambda: {"batsman_data": [], "bowler_data": [], "extras": {}, "fow": []})
+
+        for scorecard in score.get('scorecard', []):
             innings_id = scorecard.get('inningsid')
-            for batsman in scorecard.get('batsman',[]):
+            if innings_id is None:
+                continue
+          
+            fow_data = scorecard.get('fow', {}).get('fow', [])
+            for batsman in scorecard.get('batsman', []):
                 batsman_id = batsman.get('id')
-                batsman_name = batsman.get('name')
-                batsman_runs = batsman.get('runs')
-                batsman_balls= batsman.get('balls')
-                batsman_fours = batsman.get('fours')
-                batsman_sixes = batsman.get('sixes')
-                batsman_strikerate = batsman.get('strkrate')
-                batsman_Is_captain = batsman.get('iscaptain')
-                batsman_Out_Descrption= batsman.get('outdec')
-
-                overs = None
-
-                fow_data = scorecard.get('fow', {}).get('fow', [])  
+             
+                overs_at_dismissal = None
                 if isinstance(fow_data, list):
-                    
                     for fow in fow_data:
-                        if isinstance(fow, dict):
-                            
-                            if fow.get('batsmanid') == batsman_id:
-                                overs = fow.get('overnbr') 
+                        if isinstance(fow, dict) and fow.get('batsmanid') == batsman_id:
+                            overs_at_dismissal = fow.get('overnbr')
+                            break
 
-                for bowler in scorecard.get('bowler',[]):
-                    bowler_id = bowler.get('id')
-                    bowler_name = bowler.get('name')
-                    bowler_overs = bowler.get('overs')
-                    bowler_maidens= bowler.get('maidens')
-                    bowler_wickets = bowler.get('wickets')
-                    bowler_runs = bowler.get('runs')
-                    bowler_economy = bowler.get('economy')
-                    bowler_Is_captain = bowler.get('iscaptain')
+                batsman_record = {
+                    #'innings_id': innings_id,
+                    #'batsman_id': batsman_id,
+                    'batsman_name': batsman.get('name'),
+                    'batsman_runs': batsman.get('runs'),
+                    'batsman_balls': batsman.get('balls'),
+                    'batsman_fours': batsman.get('fours'),
+                    'batsman_sixes': batsman.get('sixes'),
+                    'batsman_strikerate': batsman.get('strkrate'),
+                    'batsman_is_captain': batsman.get('iscaptain'),
+                    'batsman_out_description': batsman.get('outdec'),
+                    'overs_at_dismissal': overs_at_dismissal
+                }
+                structured_data_by_innings[innings_id]["batsman_data"].append(batsman_record)
+            
+            bowler_list_raw = scorecard.get("bowler", [])
+            if isinstance(bowler_list_raw, dict):
+                bowler_list = bowler_list_raw.get("bowler", [])
+            else:
+                bowler_list = bowler_list_raw
 
-                Score_card.append({
-                    'innings_id':innings_id,
-                    'batsman_id':batsman_id,
-                    'batsman_name':batsman_name,
-                    'batsman_runs':batsman_runs,
-                    'batsman_balls':batsman_balls,
-                    'batsman_fours':batsman_fours,
-                    'batsman_sixes':batsman_sixes,
-                    'batsman_strikerate':batsman_strikerate,
-                    'batsman_Is_captain':batsman_Is_captain,
-                    'batsman_Out_Descrption':batsman_Out_Descrption,
-                    'bowler_id':bowler_id,
-                    'bowler_name':bowler_name,
-                    'bowler_overs':bowler_overs,
-                    'bowler_wickets':bowler_wickets,
-                    'bowler_maidens':bowler_maidens,
-                    'bowler_runs':bowler_runs,
-                    'bowler_economy':bowler_economy,
-                    'bowler_Is_captain':bowler_Is_captain,
-                    'overs':overs
+            for bowler in bowler_list:
+                bowler_record = {
+                    #'innings_id': innings_id,
+                    #'bowler_id': bowler.get('id'),
+                    'bowler_name': bowler.get('name'),
+                    'bowler_overs': bowler.get('overs'),
+                    'bowler_maidens': bowler.get('maidens'),
+                    'bowler_wickets': bowler.get('wickets'),
+                    'bowler_runs': bowler.get('runs'),
+                    'bowler_economy': bowler.get('economy'),
+                    'bowler_is_captain': bowler.get('iscaptain'),
+                }
+                structured_data_by_innings[innings_id]["bowler_data"].append(bowler_record)
 
-                    
-                })
+            structured_data_by_innings[innings_id]["fow"] = fow_data
+            structured_data_by_innings[innings_id]["extras"] = scorecard.get('extras', {})
 
-        return(Score_card)
+        
+        return structured_data_by_innings
+    
+    # def scorecard_extract(self):
+
+    #     with open("scr.json","r",encoding="utf-8")as file:
+    #         score = json.load(file)
+
+    #     sd = self.scorecard_by_innings(score)
+
+    #     for Innings
+    
+    
             # matches = self.Get_Match_Details()
             # Matchid = matches['match_id']
 
@@ -175,8 +205,16 @@ class Live_Dashbord():
 
     def live_matches(self):   
         matches = self.Get_Match_Details()
-        scorecard = self.ScoreCard()   
-        df = pd.DataFrame(scorecard)          
+        st.write(1)
+        Innings_data = self.scorecard_by_innings()   
+        st.write(2)
+        innings_1= Innings_data[1]  
+        innings_2= Innings_data[2] 
+        innings_3= Innings_data[3] 
+        innings_4= Innings_data[4] 
+        # innings_1_bowler = pd.DataFrame(Innings_data[1]['bowler_data'])
+        # innings_1_extras = pd.DataFrame([Innings_data[1]['extras']])
+        #innings_1_fow = pd.DataFrame(Innings_data[1]['fow'])
         st.title("Live Match Dashboard 🏏",width='stretch')
         selected_match = st.selectbox('Select a Match',options=matches,
                     format_func=lambda m: f"{m['series_name']} ({m['team1_sname']} vs {m['team2_sname']})")
@@ -231,7 +269,13 @@ class Live_Dashbord():
                 inn_details= st.button('innings1')
 
             if inn_details:
-                st.dataframe(df,hide_index=True)
+                st.markdown("Batting Details:")
+                st.dataframe(pd.DataFrame(innings_1['batsman_data']),hide_index=True)
+                st.markdown("Bowling Details:")
+                st.dataframe(pd.DataFrame(innings_1['bowler_data']),hide_index=True)
+                st.markdown("Extras:")
+                st.dataframe(pd.DataFrame([innings_1['extras']]),hide_index=True)
+                #st.dataframe(innings_1_fow,hide_index=True,column_config={'batsmanid':None})
 
                 if selected_match['team1score_inn2']:
                     st.markdown(f"**{Team1details_inn2['TeamName']}|Innings2**")
@@ -254,7 +298,12 @@ class Live_Dashbord():
                 st.markdown("---")
                 inn2_details = st.button('innings2')
                 if inn2_details:
-                    st.write("aaa")
+                    st.markdown("Batting Details:")
+                    st.dataframe(pd.DataFrame(innings_2['batsman_data']),hide_index=True)
+                    st.markdown("Bowling Details:")
+                    st.dataframe(pd.DataFrame(innings_2['bowler_data']),hide_index=True)
+                    st.markdown("Extras:")
+                    st.dataframe(pd.DataFrame([innings_2['extras']]),hide_index=True)
 
                 if selected_match['team2score_inn2']:
                     st.markdown(f"**{Team2details_inn2['TeamName']}|Innings2**")
