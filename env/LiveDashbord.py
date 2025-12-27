@@ -241,7 +241,7 @@ class Live_Dashbord():
                     inn_details1= st.button(f"**{Team1details_inn1['TeamName']}|Innings1Scorecard**")
                 
                 if selected_match['team1score_inn2']:
-                    inn_details3 = st.button(f"**{Team1details_inn2['TeamName']}|Innings3ScoreCard**")
+                    inn_details3 = st.button(f"**{Team1details_inn2['TeamName']}|Innings2ScoreCard**")
                     
 
 
@@ -284,9 +284,9 @@ class Live_Dashbord():
                     st.markdown("---")
 
                 if selected_match['team2score_inn2']:                  
-                    inn_details2 = st.button(f"**{Team2details_inn1['TeamName']}|Innings2ScoreCard**")
+                    inn_details2 = st.button(f"**{Team2details_inn1['TeamName']}|Innings1ScoreCard**")
                 if selected_match['team2score_inn2']:
-                    inn_details4 = st.button(f"**{Team2details_inn2['TeamName']}|Innings4ScoreCard**")
+                    inn_details4 = st.button(f"**{Team2details_inn2['TeamName']}|Innings2ScoreCard**")
 
                 
             if inn_details2:

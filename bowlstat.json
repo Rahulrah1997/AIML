@@ -1,0 +1,146 @@
+{
+    "headers": [
+        "ROWHEADER",
+        "Test",
+        "ODI",
+        "T20",
+        "IPL"
+    ],
+    "values": [
+        {
+            "values": [
+                "Matches",
+                "200",
+                "463",
+                "1",
+                "78"
+            ]
+        },
+        {
+            "values": [
+                "Innings",
+                "145",
+                "270",
+                "1",
+                "4"
+            ]
+        },
+        {
+            "values": [
+                "Balls",
+                "4240",
+                "8054",
+                "15",
+                "36"
+            ]
+        },
+        {
+            "values": [
+                "Runs",
+                "2492",
+                "6850",
+                "12",
+                "58"
+            ]
+        },
+        {
+            "values": [
+                "Maidens",
+                "83",
+                "24",
+                "0",
+                "0"
+            ]
+        },
+        {
+            "values": [
+                "Wickets",
+                "46",
+                "154",
+                "1",
+                "0"
+            ]
+        },
+        {
+            "values": [
+                "Avg",
+                "54.17",
+                "44.48",
+                "12.0",
+                "0.0"
+            ]
+        },
+        {
+            "values": [
+                "Eco",
+                "3.53",
+                "5.1",
+                "4.8",
+                "9.67"
+            ]
+        },
+        {
+            "values": [
+                "SR",
+                "92.17",
+                "52.3",
+                "15.0",
+                "0.0"
+            ]
+        },
+        {
+            "values": [
+                "BBI",
+                "3/10",
+                "5/32",
+                "1/12",
+                "0/7"
+            ]
+        },
+        {
+            "values": [
+                "BBM",
+                "3/14",
+                "5/32",
+                "1/12",
+                "0/7"
+            ]
+        },
+        {
+            "values": [
+                "4w",
+                "0",
+                "4",
+                "0",
+                "0"
+            ]
+        },
+        {
+            "values": [
+                "5w",
+                "0",
+                "2",
+                "0",
+                "0"
+            ]
+        },
+        {
+            "values": [
+                "10w",
+                "0",
+                "0",
+                "0",
+                "0"
+            ]
+        }
+    ],
+    "appIndex": {
+        "seoTitle": "Sachin Tendulkar Profile - Cricbuzz | Cricbuzz.com",
+        "webURL": "http://www.cricbuzz.com/profiles/25/sachin-tendulkar"
+    },
+    "seriesSpinner": [
+        {
+            "seriesName": "Career"
+        }
+    ]
+}
