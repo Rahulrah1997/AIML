@@ -10,28 +10,24 @@ from collections import defaultdict
 
 
 class Live_Dashbord():
-    
-#@st.fragment(run_every=5)
-    
+      
     
     def Get_Match_Details(self):
         matches = []
         
         
-        # url = "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live"
+        url = "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live"
 
-        # headers = {
-        # "x-rapidapi-key": "a5528101fdmshd5d19c93da4909ep189b28jsnc2030d0871ae",
-        # "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
-        # "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
-        #             }
-        # response = requests.get(url, headers=headers)
-        # data = response.json()
+        headers = {
+        "x-rapidapi-key": "a5528101fdmshd5d19c93da4909ep189b28jsnc2030d0871ae",
+        "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+        "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
+                    }
+        response = requests.get(url, headers=headers)
+        data = response.json()
 
-        with open ('matchesdata.json','r',encoding='utf-8') as file:
-            data = json.load(file)
-
-        
+        # with open ('matchesdata.json','r',encoding='utf-8') as file:
+        #     data = json.load(file)
 
         for type_match in data.get("typeMatches",[]):
             for series_match in type_match.get("seriesMatches",[]):
@@ -98,27 +94,26 @@ class Live_Dashbord():
 
                 )
         return matches
-    def scorecard_by_innings(self):
+    
 
-        # with open("scr.json","r",encoding="utf-8")as file:
-        #     score = json.load(file)
-        st.write(3)
-
+    def live_matches(self):   
         matches = self.Get_Match_Details()
-        st.write(4)
-        Matchid = matches['match_id']
-        st.write(5)
-
-        url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{Matchid}/scard"
+        st.title("Live Match Dashboard 🏏",width='stretch')
+        selected_match = st.selectbox('Select a Match',options=matches,
+                    format_func=lambda m: f"{m['series_name']} ({m['team1_sname']} vs {m['team2_sname']})")
+        
+        if selected_match['state'] == 'Complete':
+            st.balloons()
+        
+        url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{selected_match['match_id']}/scard"
 
         headers = {
             "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
             "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
         }
-        st.write(7)
-
+        
         response = requests.get(url, headers=headers)
-        st.write(6)
+        
         score = response.json()
         
         structured_data_by_innings = defaultdict(lambda: {"batsman_data": [], "bowler_data": [], "extras": {}, "fow": []})
@@ -140,8 +135,6 @@ class Live_Dashbord():
                             break
 
                 batsman_record = {
-                    #'innings_id': innings_id,
-                    #'batsman_id': batsman_id,
                     'batsman_name': batsman.get('name'),
                     'batsman_runs': batsman.get('runs'),
                     'batsman_balls': batsman.get('balls'),
@@ -162,8 +155,6 @@ class Live_Dashbord():
 
             for bowler in bowler_list:
                 bowler_record = {
-                    #'innings_id': innings_id,
-                    #'bowler_id': bowler.get('id'),
                     'bowler_name': bowler.get('name'),
                     'bowler_overs': bowler.get('overs'),
                     'bowler_maidens': bowler.get('maidens'),
@@ -177,50 +168,14 @@ class Live_Dashbord():
             structured_data_by_innings[innings_id]["fow"] = fow_data
             structured_data_by_innings[innings_id]["extras"] = scorecard.get('extras', {})
 
+            Innings_data = structured_data_by_innings
+
+            innings_1= Innings_data[1]  
+            innings_2= Innings_data[2] 
+            innings_3= Innings_data[3] 
+            innings_4= Innings_data[4] 
         
-        return structured_data_by_innings
-    
-    # def scorecard_extract(self):
-
-    #     with open("scr.json","r",encoding="utf-8")as file:
-    #         score = json.load(file)
-
-    #     sd = self.scorecard_by_innings(score)
-
-    #     for Innings
-    
-    
-            # matches = self.Get_Match_Details()
-            # Matchid = matches['match_id']
-
-            # url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{Matchid}/scard"
-
-            # headers = {
-            #     "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
-            #     "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
-            # }
-
-            # response = requests.get(url, headers=headers)
         
-
-    def live_matches(self):   
-        matches = self.Get_Match_Details()
-        st.write(1)
-        Innings_data = self.scorecard_by_innings()   
-        st.write(2)
-        innings_1= Innings_data[1]  
-        innings_2= Innings_data[2] 
-        innings_3= Innings_data[3] 
-        innings_4= Innings_data[4] 
-        # innings_1_bowler = pd.DataFrame(Innings_data[1]['bowler_data'])
-        # innings_1_extras = pd.DataFrame([Innings_data[1]['extras']])
-        #innings_1_fow = pd.DataFrame(Innings_data[1]['fow'])
-        st.title("Live Match Dashboard 🏏",width='stretch')
-        selected_match = st.selectbox('Select a Match',options=matches,
-                    format_func=lambda m: f"{m['series_name']} ({m['team1_sname']} vs {m['team2_sname']})")
-        
-        if selected_match['state'] == 'Complete':
-            st.balloons()
         
         if selected_match:
             formatter = lambda n:f"Match Details: ({n['team1_name']} vs {n['team2_name']})"
@@ -243,11 +198,11 @@ class Live_Dashbord():
                 Team1details_inn2 = {'Score':selected_match['team1score_inn2'],'Overs':selected_match['team1overs_inn2'],
                             'wicket':selected_match['team1wicket_inn2'],'TeamName':selected_match['team1_name']}
             
-            Team2details_inn1 = {'Score':selected_match['team2score_inn1'],'overs':selected_match['team2overs_inn1'],
+            Team2details_inn1 = {'Score':selected_match['team2score_inn1'],'Overs':selected_match['team2overs_inn1'],
                         'wicket':selected_match['team2wicket_inn1'],'TeamName':selected_match['team2_name']}
             
             if selected_match['team2score_inn2']:
-                Team2details_inn2 = {'Score':selected_match['team2score_inn2'],'overs':selected_match['team2overs_inn2'],
+                Team2details_inn2 = {'Score':selected_match['team2score_inn2'],'Overs':selected_match['team2overs_inn2'],
                                 'wicket':selected_match['team2wicket_inn2'],'TeamName':selected_match['team2_name']}
         
             st.markdown(f"*{MatchDetails['Description']}* | {MatchDetails['Match_Format']}")
@@ -257,25 +212,22 @@ class Live_Dashbord():
             st.markdown("---")
 
             c1,c2 = st.columns(2)
-            
+            inn_details1 = False
+            inn_details2 = False
+            inn_details3 = False
+            inn_details4 = False
 
             with c1:
-                st.markdown(f"**{Team1details_inn1['TeamName']}|Innings1**")
-                st.metric(label="Score", value=Team1details_inn1['Score'])
-                c1_inner1, c1_inner2 = st.columns(2)
-                c1_inner1.metric("Overs", Team1details_inn1['Overs'])
-                c1_inner2.metric("Wickets", Team1details_inn1['wicket'])
-                st.markdown("---")
-                inn_details= st.button('innings1')
+                if selected_match['team1score_inn1']:
+                    st.markdown(f"**{Team1details_inn1['TeamName']}|Innings1**")
+                    st.metric(label="Score", value=Team1details_inn1['Score'])
+                    c1_inner1, c1_inner2 = st.columns(2)
+                    c1_inner1.metric("Overs", Team1details_inn1['Overs'])
+                    c1_inner2.metric("Wickets", Team1details_inn1['wicket'])
+                    st.markdown("---")
+                
 
-            if inn_details:
-                st.markdown("Batting Details:")
-                st.dataframe(pd.DataFrame(innings_1['batsman_data']),hide_index=True)
-                st.markdown("Bowling Details:")
-                st.dataframe(pd.DataFrame(innings_1['bowler_data']),hide_index=True)
-                st.markdown("Extras:")
-                st.dataframe(pd.DataFrame([innings_1['extras']]),hide_index=True)
-                #st.dataframe(innings_1_fow,hide_index=True,column_config={'batsmanid':None})
+            
 
                 if selected_match['team1score_inn2']:
                     st.markdown(f"**{Team1details_inn2['TeamName']}|Innings2**")
@@ -285,25 +237,43 @@ class Live_Dashbord():
                     c1_inner2.metric("Wickets", Team1details_inn2['wicket'])
                     st.markdown("---")
 
-                    inn_details = st.button('innings3')
+                if selected_match['team1score_inn1']:                  
+                    inn_details1= st.button(f"**{Team1details_inn1['TeamName']}|Innings1Scorecard**")
+                
+                if selected_match['team1score_inn2']:
+                    inn_details3 = st.button(f"**{Team1details_inn2['TeamName']}|Innings3ScoreCard**")
+                    
 
 
+                
 
+            if inn_details1:
+                st.markdown("Batting Details:")
+                st.dataframe(pd.DataFrame(innings_1['batsman_data']),hide_index=True)
+                st.markdown("Bowling Details:")
+                st.dataframe(pd.DataFrame(innings_1['bowler_data']),hide_index=True)
+                st.markdown("Extras:")
+                st.dataframe(pd.DataFrame([innings_1['extras']]),hide_index=True)
+                
+
+            
+            if inn_details3:
+                st.markdown("Batting Details:")
+                st.dataframe(pd.DataFrame(innings_3['batsman_data']),hide_index=True)
+                st.markdown("Bowling Details:")
+                st.dataframe(pd.DataFrame(innings_3['bowler_data']),hide_index=True)
+                st.markdown("Extras:")
+                st.dataframe(pd.DataFrame([innings_3['extras']]),hide_index=True)
+                
             with c2:
-                st.markdown(f"**{Team2details_inn1['TeamName']}**")
-                st.metric(label="Score", value=Team2details_inn1['Score'])
-                c2_inner1, c2_inner2 = st.columns(2)
-                c2_inner1.metric("Overs", Team2details_inn1['overs'])
-                c2_inner2.metric("Wickets", Team2details_inn1['wicket'])
-                st.markdown("---")
-                inn2_details = st.button('innings2')
-                if inn2_details:
-                    st.markdown("Batting Details:")
-                    st.dataframe(pd.DataFrame(innings_2['batsman_data']),hide_index=True)
-                    st.markdown("Bowling Details:")
-                    st.dataframe(pd.DataFrame(innings_2['bowler_data']),hide_index=True)
-                    st.markdown("Extras:")
-                    st.dataframe(pd.DataFrame([innings_2['extras']]),hide_index=True)
+                if selected_match['team2score_inn1']:
+                    st.markdown(f"**{Team2details_inn1['TeamName']}|Innings1**")
+                    st.metric(label="Score", value=Team2details_inn1['Score'])
+                    c2_inner1, c2_inner2 = st.columns(2)
+                    c2_inner1.metric("Overs", Team2details_inn1['Overs'])
+                    c2_inner2.metric("Wickets", Team2details_inn1['wicket'])
+                    st.markdown("---")               
+                
 
                 if selected_match['team2score_inn2']:
                     st.markdown(f"**{Team2details_inn2['TeamName']}|Innings2**")
@@ -312,6 +282,27 @@ class Live_Dashbord():
                     c1_inner1.metric("Overs", Team2details_inn2['Overs'])
                     c1_inner2.metric("Wickets", Team2details_inn2['wicket'])
                     st.markdown("---")
-                    st.button('innings4')
+
+                if selected_match['team2score_inn2']:                  
+                    inn_details2 = st.button(f"**{Team2details_inn1['TeamName']}|Innings2ScoreCard**")
+                if selected_match['team2score_inn2']:
+                    inn_details4 = st.button(f"**{Team2details_inn2['TeamName']}|Innings4ScoreCard**")
+
+                
+            if inn_details2:
+                st.markdown("Batting Details:")
+                st.dataframe(pd.DataFrame(innings_2['batsman_data']),hide_index=True)
+                st.markdown("Bowling Details:")
+                st.dataframe(pd.DataFrame(innings_2['bowler_data']),hide_index=True)
+                st.markdown("Extras:")
+                st.dataframe(pd.DataFrame([innings_2['extras']]),hide_index=True)
+
+            if inn_details4:
+                st.markdown("Batting Details:")
+                st.dataframe(pd.DataFrame(innings_4['batsman_data']),hide_index=True)
+                st.markdown("Bowling Details:")
+                st.dataframe(pd.DataFrame(innings_4['bowler_data']),hide_index=True)
+                st.markdown("Extras:")
+                st.dataframe(pd.DataFrame([innings_4['extras']]),hide_index=True)
                     
         
