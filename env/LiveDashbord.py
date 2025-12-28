@@ -19,8 +19,7 @@ class Live_Dashbord():
         url = "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live"
 
         headers = {
-        "x-rapidapi-key": "a5528101fdmshd5d19c93da4909ep189b28jsnc2030d0871ae",
-        "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+        "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
         "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
                     }
         response = requests.get(url, headers=headers)
@@ -28,6 +27,7 @@ class Live_Dashbord():
 
         # with open ('matchesdata.json','r',encoding='utf-8') as file:
         #     data = json.load(file)
+        
 
         for type_match in data.get("typeMatches",[]):
             for series_match in type_match.get("seriesMatches",[]):
@@ -108,7 +108,7 @@ class Live_Dashbord():
         url = f"https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/{selected_match['match_id']}/scard"
 
         headers = {
-            "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+            "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
             "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
         }
         

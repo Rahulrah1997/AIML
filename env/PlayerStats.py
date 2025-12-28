@@ -24,7 +24,7 @@ class Player_Stats():
             querystring = {"plrN":PlayerName}
 
             headers = {
-                "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+                "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
                 "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
             }
 
@@ -64,7 +64,7 @@ class Player_Stats():
                 url = f"https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/{selected_player['player_id']}"
 
                 headers = {
-                    "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+                    "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
                     "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
                 }
 
@@ -75,7 +75,7 @@ class Player_Stats():
                 url = f"https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/{selected_player['player_id']}/batting"
 
                 headers = {
-                    "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+                    "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
                     "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
                 }
 
@@ -85,7 +85,7 @@ class Player_Stats():
                 url = f"https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/{selected_player['player_id']}/bowling"
 
                 headers = {
-                    "x-rapidapi-key": "e19f088f4emsh5939c6cc237aa1fp175797jsne25dc4cf301b",
+                    "x-rapidapi-key": "1c54fc90demshfb84a587356dcf2p19a711jsn8a4fe5302ba4",
                     "x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com"
                 }
 
