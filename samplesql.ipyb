@@ -1,1 +1,95 @@
+#question 2
+import json
+with open("scr.json","r",encoding="utf-8")as file:
+    score = json.load(file)
+recent_Matches = []
+for type_match in score.get("typeMatches",[]):
+            Matchtype = type_match.get('matchType')
+            for series_match in type_match.get("seriesMatches",[]):
+                series_data = series_match.get("seriesAdWrapper",{})
+                series_id = series_data.get("seriesId")
+                series_name = series_data.get("seriesName")
 
+                for match in series_data.get("matches",[]):
+                    info = match.get("matchInfo",{})
+                    match_id = info.get("matchId")
+                    description = info.get("matchDesc")
+                    match_format = info.get("matchFormat")
+                    start_date = info.get("startDate")
+                    End_date = info.get("endDate")
+                    match_status = info.get("status")
+                    state = info.get("state")
+                    team1_name = info.get("team1",{}).get("teamName")
+                    team1_id = info.get("team1",{}).get("teamId")
+                    team1_sname = info.get("team1",{}).get("teamSName")
+                    team2_name = info.get("team2",{}).get("teamName")
+                    team2_id = info.get("team1",{}).get("teamId")
+                    team2_sname = info.get("team2",{}).get("teamSName")
+                    Ground_name = info.get("venueInfo",{}).get("ground")
+                    Ground_id = info.get("venueInfo",{}).get("id")
+                    city = info.get("venueInfo",{}).get("city")
+                    matchScore = match.get('matchScore',{})
+                    team1score_inn1 = matchScore.get('team1Score',{}).get('inngs1',{}).get('runs')
+                    team1wicket_inn1 = matchScore.get('team1Score',{}).get('inngs1',{}).get('wickets')
+                    team1overs_inn1 = matchScore.get('team1Score',{}).get('inngs1',{}).get('overs')
+                    team1innid_inn1 = matchScore.get('team1Score',{}).get('inngs1',{}).get('inningsId')
+                    team2score_inn1 = matchScore.get('team2Score',{}).get('inngs1',{}).get('runs')
+                    team2wicket_inn1 = matchScore.get('team2Score',{}).get('inngs1',{}).get('wickets')
+                    team2overs_inn1 = matchScore.get('team2Score',{}).get('inngs1',{}).get('overs')
+                    team2innid_inn1 = matchScore.get('team2Score',{}).get('inngs1',{}).get('inningsId')
+                    team1score_inn2 = matchScore.get('team1Score',{}).get('inngs2',{}).get('runs')
+                    team1wicket_inn2 = matchScore.get('team1Score',{}).get('inngs2',{}).get('wickets')
+                    team1overs_inn2 = matchScore.get('team1Score',{}).get('inngs2',{}).get('overs')
+                    team1innid_inn2 = matchScore.get('team1Score',{}).get('inngs2',{}).get('inningsId')
+                    team2score_inn2 = matchScore.get('team2Score',{}).get('inngs2',{}).get('runs')
+                    team2wicket_inn2 = matchScore.get('team2Score',{}).get('inngs2',{}).get('wickets')
+                    team2overs_inn2 = matchScore.get('team2Score',{}).get('inngs2',{}).get('overs')
+                    team2innid_inn2 = matchScore.get('team2Score',{}).get('inngs2',{}).get('inningsId')
+
+                    recent_Matches.append({
+                        'series_id': series_id,
+                        'Matchtype':Matchtype,
+                        'series_name': series_name,
+                        'match_id': match_id,
+                        'description': description,
+                        'match_format': match_format,
+                        'start_date': start_date,
+                        'End_date':End_date,
+                        'match_status': match_status,
+                        'team1_name': team1_name,
+                        'team1_id':team1_id,
+                        'team1_sname': team1_sname,
+                        'team2_name': team2_name,
+                        'team2_sname': team2_sname,
+                        'team2_id':team2_id,
+                        'Ground_name': Ground_name,
+                        'city': city,
+                        'state':state,
+                        'team1score_inn1':team1score_inn1,
+                        'team1wicket_inn1':team1wicket_inn1,
+                        'team1overs_inn1':team1overs_inn1,
+                        'team2score_inn1':team2score_inn1,
+                        'team2wicket_inn1':team2wicket_inn1,
+                        'team2overs_inn1':team2overs_inn1,
+                        'team1score_inn2':team1score_inn2,
+                        'team1wicket_inn2':team1wicket_inn2,
+                        'team1overs_inn2':team1overs_inn2,
+                        'team2score_inn2':team2score_inn2,
+                        'team2wicket_inn2':team2wicket_inn2,
+                        'team2overs_inn2':team2overs_inn2,
+                        'team1innid_inn1':team1innid_inn1,
+                        'team2innid_inn1':team2innid_inn1,
+                        'team1innid_inn2':team1innid_inn2,
+                        'team2innid_inn2':team2innid_inn2
+                }
+
+                )
+                    
+# create table matchdetails (id int primary key, series_id int,match_id int unique, matchtype varchar(10), series_name varchar(50),match_description varchar(20),
+# match_format varchar(15),Start_date datetime, End_date datetime, match_status varchar(30), Team1_name varchar(15), Team2_name varchar(15),
+# team1_id int, team2_id int, team1_sname varchar(5),team2_sname varchar(5),match_state varchar(20),ground_name varchar(30),city varchar(20))
+
+# create table scoredetails (id int primary key,match_id int, Inn1_team1innid int,Inn1_team2innid int,Inn1_team1score int, Inn1_team1wicket int,
+# Inn1_team1overs float,Inn1_team2score int, Inn1_team2wicket int, Inn1_team2overs float,Inn2_team1innid int,Inn2_team2innid int,Inn2_team1score int, Inn2_team1wicket int,
+# Inn2_team1overs float,Inn2_team2score int, Inn2_team2wicket int, Inn2_team2overs float,CONSTRAINT fk_match_score FOREIGN KEY (match_id) 
+# REFERENCES matchdetails(match_id))
