@@ -2,3 +2,5 @@ env/*
 !env/CricketDashboard.py
 !env/LiveDashbord.py
 !env/PlayerStats.py
+!env/Analytics.py
+!env/SQLAnalytics.py
