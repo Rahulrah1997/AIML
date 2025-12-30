@@ -18,10 +18,21 @@ class SQL_Analytics:
         self.mycursor = self.mydb.cursor()
     def q1(self):
         self.mycursor.execute("use cricketdata;")
-        ssql = "select name,battingstyle,bowlingstyle,playerrole from playerinfo;"
-        self.mycursor.execute(ssql)
+        sqlquery = "select name AS Name,battingstyle AS BatStyle,bowlingstyle AS BowlStyle,playerrole AS PlayerRole from playerinfo;"
+        self.mycursor.execute(sqlquery)
         sdat = self.mycursor.fetchall()
         columns = [desc[0] for desc in self.mycursor.description]
-        df = pd.DataFrame(sdat,columns=columns)
-        return df
+        sqldata = pd.DataFrame(sdat,columns=columns)
+        return sqldata
     
+    def q2(self):
+        self.mycursor.execute("use cricketdata;")
+        sqlquery = """select matchtype AS MatchType,series_name AS SeriesName,match_description AS Description,
+                    match_format AS Format,Start_date AS StartDate,End_date AS EndDate,
+                    match_status AS Status,Team1_name AS Team1Name,Team2_name AS Team2Name,
+                    match_state AS State,ground_name AS Ground ,city AS City  from matchdetails order  by Start_date desc"""
+        self.mycursor.execute(sqlquery)
+        sdat = self.mycursor.fetchall()
+        columns = [desc[0] for desc in self.mycursor.description]
+        sqldata = pd.DataFrame(sdat,columns=columns)
+        return sqldata

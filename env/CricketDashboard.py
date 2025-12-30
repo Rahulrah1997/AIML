@@ -5,11 +5,11 @@ import numpy as np
 import altair as alt
 from LiveDashbord import Live_Dashbord 
 from PlayerStats import Player_Stats
-from Analytics import analy
+from Analytics import DataAnalytics
 
 LD = Live_Dashbord()
 ps = Player_Stats()
-ay = analy()
+da = DataAnalytics()
 st.sidebar.title("Criket Dashboard")
 #st.sidebar.header("Select a page to view details")
 Pageselection =st.sidebar.selectbox("Select Match",['Live Matches','Player Stats','SQL Analytics','CRUD Operations'])
@@ -24,9 +24,9 @@ Pageselection =st.sidebar.selectbox("Select Match",['Live Matches','Player Stats
 
 #      ps.Player_Search()
 
-if Pageselection == 'Player Stats':
+if Pageselection == 'SQL Analytics':
 
-    ay.sss()
+    da.data_display()
     
     
 
